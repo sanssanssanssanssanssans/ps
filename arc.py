@@ -35,3 +35,20 @@ elif mode == "c":
 
     shutil.copy("main.c", target_path)
     print(f"{target_path} saved!")
+elif mode == "py":
+    s = int(input().strip()) # 문제 번호
+    folder = (s // 1000) * 1000
+    name = str(folder)
+
+    dst_file = f"{s}.py"
+    base = "archive"
+    target_dir = os.path.join(base, name)
+    target_path = os.path.join(target_dir, dst_file)
+    os.makedirs(target_dir, exist_ok = True)
+
+    if not os.path.exists("main.py"):
+        print("main.py X")
+        exit(1)
+
+    shutil.copy("main.py", target_path)
+    print(f"{target_path} saved!") 
