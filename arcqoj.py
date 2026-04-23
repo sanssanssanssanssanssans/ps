@@ -7,7 +7,7 @@ if mode == "cpp":
     name = str(folder)
 
     dst_file = f"{s}.cpp"
-    base = "archive"
+    base = "qoj"
     target_dir = os.path.join(base, name)
     target_path = os.path.join(target_dir, dst_file)
     os.makedirs(target_dir, exist_ok = True)
@@ -24,7 +24,7 @@ elif mode == "c":
     name = str(folder)
 
     dst_file = f"{s}.c"
-    base = "archive"
+    base = "qoj"
     target_dir = os.path.join(base, name)
     target_path = os.path.join(target_dir, dst_file)
     os.makedirs(target_dir, exist_ok = True)
@@ -41,7 +41,7 @@ elif mode == "py":
     name = str(folder)
 
     dst_file = f"{s}.py"
-    base = "archive"
+    base = "qoj"
     target_dir = os.path.join(base, name)
     target_path = os.path.join(target_dir, dst_file)
     os.makedirs(target_dir, exist_ok = True)
