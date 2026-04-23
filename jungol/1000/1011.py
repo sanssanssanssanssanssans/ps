@@ -1,24 +1,15 @@
+# ====== module : mypacks.math.sieve ======
 from typing import List
 
 class SieveReturnClass:
-    __slots__ = (
-        "n",
-        "is_prime",
-        "primes",
-        "spf"
-    )
+    __slots__ = ('n', 'is_prime', 'primes', 'spf')
 
-    def __init__(self,
-        n,
-        is_prime,
-        primes,
-        spf,
-    ) -> None:
+    def __init__(self, n, is_prime, primes, spf) -> None:
         self.n = n
         self.is_prime = is_prime
         self.primes = primes
         self.spf = spf
-    
+
     def isPrime(self, x: int) -> bool:
         return self.is_prime[x]
 
@@ -30,24 +21,16 @@ class Sieve:
     시간복잡도 : O(N log log N)
     
     """
-
     __slots__ = ()
 
     @staticmethod
     def build(n: int) -> SieveReturnClass:
         if n < 2:
-            return SieveReturnClass(
-                n,
-                bytearray(n + 1),
-                [],
-                [0] * (n + 1)
-            )
-
+            return SieveReturnClass(n, bytearray(n + 1), [], [0] * (n + 1))
         is_prime = bytearray(b'\x01') * (n + 1)
         is_prime[0] = is_prime[1] = 0
         primes: List[int] = []
         spf: List[int] = [0] * (n + 1)
-
         for i in range(2, n + 1):
             if is_prime[i]:
                 primes.append(i)
@@ -60,10 +43,14 @@ class Sieve:
                 spf[x] = p
                 if i % p == 0:
                     break
-        
-        return SieveReturnClass(
-            n,
-            is_prime,
-            primes,
-            spf
-        )
+        return SieveReturnClass(n, is_prime, primes, spf)
+
+# ====== module : main ======
+n, m, k = map(int, input().split())
+isp = Sieve().build(m).is_prime
+cnt = 0
+for i in range(1, m + 1):
+    if isp[i] and (i - 1) % n == k:
+        cnt += 1
+print(cnt)
+
