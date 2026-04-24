@@ -7,13 +7,21 @@ using namespace std;
 #define trav(x, v) for(auto&x : v)
 using pii = pair<int,int>;
 using vi = vector<int>;
-const float pi = acos(-1);
 mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 
 void naive() {}
 void stress() {}
+
+int n;
+const int mod = 42;
 void init(){}
-void solve(){}
+void solve(){
+    int t=10;
+    while(t--){
+        cin >> n;
+        cout << n % mod << '\n';
+    }
+}
 
 signed main() { 
     cin.tie(0) -> sync_with_stdio(0);
